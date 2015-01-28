@@ -1,0 +1,9 @@
+/media/
+/node_modules/
+/src/engine/
+
+package.json
+server*
+
+.DS_Store
+Thumbs.db
