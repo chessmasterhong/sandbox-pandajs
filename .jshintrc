@@ -20,5 +20,7 @@
     "eqnull": true,
 
     // CUSTOM GLOBALS
-    "globals": {}
+    "globals": {
+        "game": true
+    }
 }
