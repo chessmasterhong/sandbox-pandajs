@@ -1,6 +1,12 @@
 pandaConfig = {
+    debug: {
+        enabled: true,
+        color: '#FFFFFF'
+    },
+
     system: {
-        startScene: 'Boot'
+        startScene: 'Boot',
+        webGL: true
     },
 
     tileMap: {
