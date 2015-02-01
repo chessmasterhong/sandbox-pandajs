@@ -15,6 +15,8 @@ game.module(
             game.addAsset('tileset/tmw_desert_spacing.png');
             game.addAsset('maps/desert.json');
 
+            game.addAsset('logo.png');
+
             // Initialize new loader with callback function
             // Change game to 'Main' scene on load complete
             var loader = new game.Loader();
@@ -34,11 +36,17 @@ game.module(
     });
 
     game.createScene('Main', {
+        backgroundColor: 0xb9bec7,
+
         init: function() {
             console.log('Hello World!');
 
             var tilemap = new game.TileMap('maps/desert.json');
             tilemap.addTo(this.stage);
+
+            var logo = new game.Sprite('logo.png');
+            this.stage.addChild(logo);
+            logo.position.set(200, 200);
         }
     });
 
