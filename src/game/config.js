@@ -4,6 +4,10 @@ pandaConfig = {
         color: '#FFFFFF'
     },
 
+    debugDraw: {
+        enabled: true
+    },
+
     system: {
         startScene: 'Boot',
         webGL: true
