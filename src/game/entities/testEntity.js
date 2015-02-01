@@ -4,22 +4,28 @@ game.module(
 .body(function() {
     'use strict';
 
-    game.addAsset('logo.png');
+    game.addAsset('panda2.png');
 
     game.createClass('testEntity', {
-        init: function() {
-            var logo = new game.Sprite('logo.png');
-            game.scene.stage.addChild(logo);
-            logo.position.set(200, 200);
+        init: function(x, y) {
+            this.body = new game.Body();
+            this.body.position.x = x;
+            this.body.position.y = y;
+            this.body.mass = 1;
+            this.body.addShape(new game.Rectangle(70, 63));
 
-            game.scene.world = new game.World();
-            var body = new game.Body();
-            body.position.x = 200;
-            body.position.y = 200;
-            body.mass = 0;
-            var shape = new game.Rectangle(100, 100);
-            body.addShape(shape);
-            game.scene.world.addBody(body);
+            this.sprite = new game.Sprite('panda2.png');
+            this.sprite.anchor.set(0.5, 0.5);
+            this.sprite.position.set(x, y);
+
+            game.scene.addObject(this);
+            game.scene.stage.addChild(this.sprite);
+            game.scene.world.addBody(this.body);
+        },
+
+        update: function() {
+            this.sprite.position.x = this.body.position.x;
+            this.sprite.position.y = this.body.position.y;
         }
     });
 });
