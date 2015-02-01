@@ -2,6 +2,7 @@ game.module(
     'game.main'
 )
 .require(
+    'game.entities.testEntity',
     'plugins.tiled.tiled'
 )
 .body(function() {
@@ -14,8 +15,6 @@ game.module(
             // Add new asset to load queue
             game.addAsset('tileset/tmw_desert_spacing.png');
             game.addAsset('maps/desert.json');
-
-            game.addAsset('logo.png');
 
             // Initialize new loader with callback function
             // Change game to 'Main' scene on load complete
@@ -44,18 +43,8 @@ game.module(
             var tilemap = new game.TileMap('maps/desert.json');
             tilemap.addTo(this.stage);
 
-            var logo = new game.Sprite('logo.png');
-            this.stage.addChild(logo);
-            logo.position.set(200, 200);
-
             this.world = new game.World();
-            var body = new game.Body();
-            body.position.x = 200;
-            body.position.y = 200;
-            body.mass = 0;
-            var shape = new game.Rectangle(100, 100);
-            body.addShape(shape);
-            this.world.addBody(body);
+            var testEntity = new game.testEntity(200, 200);
         }
     });
 
