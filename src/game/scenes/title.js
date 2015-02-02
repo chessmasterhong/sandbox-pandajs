@@ -1,3 +1,8 @@
+/**
+ * @fileOverview Title screen module for displaying the title screen when the
+ *     game is loaded and ready to play.
+ */
+
 game.module(
     'game.scenes.title'
 )

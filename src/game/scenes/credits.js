@@ -1,3 +1,8 @@
+/**
+ * @fileOverview Credits screen module for displaying the contributors of the
+ *     game and any additional acknowledgments.
+ */
+
 game.module(
     'game.scenes.credits'
 )

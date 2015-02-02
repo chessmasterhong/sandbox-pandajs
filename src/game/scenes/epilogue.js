@@ -1,3 +1,8 @@
+/**
+ * @fileOverview Game epilogue module for displaying the ending scenario of the
+ *     game.
+ */
+
 game.module(
     'game.scenes.epilogue'
 )

@@ -1,3 +1,9 @@
+/**
+ * @fileOverview World module for handling all world interactions for the
+ *     player, non-player characters, and environment. Main module for
+ *     connecting all other game logic together.
+ */
+
 game.module(
     'game.scenes.world'
 )

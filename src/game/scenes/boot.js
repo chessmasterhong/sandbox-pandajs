@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Boot module for loading all essential assets required
+ *     immediately in the game. Initializes and configures default game
+ *     settings.
+ */
+
 game.module(
     'game.scenes.boot'
 )

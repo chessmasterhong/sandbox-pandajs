@@ -1,3 +1,7 @@
+/**
+ * @fileOverview Battle module for handling all combat logic on the battlefield.
+ */
+
 game.module(
     'game.scenes.battle'
 )

@@ -1,3 +1,8 @@
+/**
+ * @fileOverview Game settings module for allowing the player to configure the
+ *     settings for the game.
+ */
+
 game.module(
     'game.scenes.settings'
 )
