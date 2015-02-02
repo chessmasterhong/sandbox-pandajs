@@ -138,6 +138,10 @@ game.module(
                     }
                 }
             }
+        },
+
+        keydown: function() {
+            game.system.setScene('World');
         }
     });
 });
