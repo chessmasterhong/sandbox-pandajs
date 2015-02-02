@@ -142,6 +142,10 @@ game.module(
 
         keydown: function() {
             game.system.setScene('World');
+        },
+
+        click: function() {
+            game.system.setScene('World');
         }
     });
 });
