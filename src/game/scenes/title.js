@@ -53,9 +53,14 @@ game.module(
             game.scene.stage.addChild(this.foreground.sprite);
 
             this.riset.timer = new game.Timer(30000);
+
+            var fader = new game.Fader();
+            fader.fadeIn();
         },
 
         update: function() {
+            this._super();
+
             this.background.sprite.tint = '0x' + Math.floor(this.background.r).toString(16) + Math.floor(this.background.g).toString(16) + Math.floor(this.background.b).toString(16);
             this.foreground.sprite.tint = '0x' + Math.floor(this.foreground.r).toString(16) + Math.floor(this.foreground.g).toString(16) + Math.floor(this.foreground.b).toString(16);
 

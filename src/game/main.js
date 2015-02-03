@@ -17,6 +17,7 @@ game.module(
     'game.entities.testEntity',
 
     // Plugins
+    'plugins.fader.fader',
     'plugins.tiled.tiled'
 )
 .body(function() {});
