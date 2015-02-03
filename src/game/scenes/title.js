@@ -13,8 +13,6 @@ game.module(
     'use strict';
 
     game.createScene('Title', {
-        ready: false,
-
         riset: {
             state: 0,
             timer: 0
@@ -41,106 +39,89 @@ game.module(
         init: function() {
             console.log('Title Scene');
 
-            // Add new asset to load queue
-            game.addAsset('interface/background/sky.png');
-            game.addAsset('interface/background/BackdropBlackLittleSparkTransparent.png');
-            game.addAsset('interface/background/d20_by_olracadejup-d4ohdvm.png');
-
-            // Initialize new loader with callback function
-            // Change game to 'Main' scene on load complete
-            var loader = new game.Loader();
-            loader.onComplete(this.loaded.bind(this));
-            loader.start();
-        },
-
-        loaded: function() {
-            this.background.sprite = new game.Sprite('interface/background/sky.png');
+            this.background.sprite = new game.Sprite('titleBackground');
             this.background.sprite.scale.set(1.6, 1.6);
             game.scene.stage.addChild(this.background.sprite);
 
-            this.midground.sprite = new game.Sprite('interface/background/BackdropBlackLittleSparkTransparent.png');
+            this.midground.sprite = new game.Sprite('titleMidground');
             this.midground.sprite.scale.set(1.6, 1.6);
             this.midground.sprite.alpha = 0;
             game.scene.stage.addChild(this.midground.sprite);
 
-            this.foreground.sprite = new game.Sprite('interface/background/d20_by_olracadejup-d4ohdvm.png');
+            this.foreground.sprite = new game.Sprite('titleForeground');
             this.foreground.sprite.scale.set(1.6, 1.6);
             game.scene.stage.addChild(this.foreground.sprite);
-
-            this.ready = true;
         },
 
         update: function() {
-            if(this.ready === true) {
-                this.background.sprite.tint = '0x' + Math.floor(this.background.r).toString(16) + Math.floor(this.background.g).toString(16) + Math.floor(this.background.b).toString(16);
-                this.foreground.sprite.tint = '0x' + Math.floor(this.foreground.r).toString(16) + Math.floor(this.foreground.g).toString(16) + Math.floor(this.foreground.b).toString(16);
+            this.background.sprite.tint = '0x' + Math.floor(this.background.r).toString(16) + Math.floor(this.background.g).toString(16) + Math.floor(this.background.b).toString(16);
+            this.foreground.sprite.tint = '0x' + Math.floor(this.foreground.r).toString(16) + Math.floor(this.foreground.g).toString(16) + Math.floor(this.foreground.b).toString(16);
 
-                if(this.riset.state === 0) { // Day/Night
-                    this.riset.timer++;
-                    if(this.riset.timer > 2000) {
-                        if(this.background.r > 128) {
-                            this.riset.state = 1;
-                        } else {
-                            this.riset.state = 2;
-                        }
-                        this.riset.timer = 0;
-                    }
-                } else if(this.riset.state === 1) { // Sunset
-                    if(this.background.g > 96) {
-                        this.background.g = (this.background.g - 0.2) % 255;
-                        this.background.b = (this.background.b - 0.2) % 255;
-                    } else if(this.background.r > 96) {
-                        this.background.r = (this.background.r - 0.2) % 255;
-                    } else if(this.background.g > 64) {
-                        this.background.r = (this.background.r - 0.1) % 255;
-                        this.background.g = (this.background.g - 0.1) % 255;
-                        this.background.b = (this.background.b - 0.1) % 255;
+            if(this.riset.state === 0) { // Day/Night
+                this.riset.timer++;
+                if(this.riset.timer > 2000) {
+                    if(this.background.r > 128) {
+                        this.riset.state = 1;
                     } else {
-                        this.riset.state = 0;
+                        this.riset.state = 2;
                     }
+                    this.riset.timer = 0;
+                }
+            } else if(this.riset.state === 1) { // Sunset
+                if(this.background.g > 96) {
+                    this.background.g = (this.background.g - 0.2) % 255;
+                    this.background.b = (this.background.b - 0.2) % 255;
+                } else if(this.background.r > 96) {
+                    this.background.r = (this.background.r - 0.2) % 255;
+                } else if(this.background.g > 64) {
+                    this.background.r = (this.background.r - 0.1) % 255;
+                    this.background.g = (this.background.g - 0.1) % 255;
+                    this.background.b = (this.background.b - 0.1) % 255;
+                } else {
+                    this.riset.state = 0;
+                }
 
-                    if(this.background.r < 128) {
-                        this.midground.sprite.alpha = (64 / this.background.r - 0.5) * 2;
-                    }
+                if(this.background.r < 128) {
+                    this.midground.sprite.alpha = (64 / this.background.r - 0.5) * 2;
+                }
 
-                    if(this.foreground.g > 176) {
-                        this.foreground.g = (this.foreground.g - 0.1) % 255;
-                        this.foreground.b = (this.foreground.b - 0.1) % 255;
-                    } else if(this.foreground.r > 176) {
-                        this.foreground.r = (this.foreground.r - 0.1) % 255;
-                    } else if(this.foreground.g > 128) {
-                        this.foreground.r = (this.foreground.r - 0.1) % 255;
-                        this.foreground.g = (this.foreground.g - 0.1) % 255;
-                        this.foreground.b = (this.foreground.b - 0.1) % 255;
-                    }
-                } else if(this.riset.state === 2) { // Sunrise
-                    if(this.background.r < 96) {
-                        this.background.r = (this.background.r + 0.1) % 255;
-                        this.background.g = (this.background.g + 0.1) % 255;
-                        this.background.b = (this.background.b + 0.1) % 255;
-                    } else if(this.background.r < 254) {
-                        this.background.r = (this.background.r + 0.2) % 255;
-                    } else if(this.background.g < 254) {
-                        this.background.g = (this.background.g + 0.2) % 255;
-                        this.background.b = (this.background.b + 0.2) % 255;
-                    } else {
-                        this.riset.state = 0;
-                    }
+                if(this.foreground.g > 176) {
+                    this.foreground.g = (this.foreground.g - 0.1) % 255;
+                    this.foreground.b = (this.foreground.b - 0.1) % 255;
+                } else if(this.foreground.r > 176) {
+                    this.foreground.r = (this.foreground.r - 0.1) % 255;
+                } else if(this.foreground.g > 128) {
+                    this.foreground.r = (this.foreground.r - 0.1) % 255;
+                    this.foreground.g = (this.foreground.g - 0.1) % 255;
+                    this.foreground.b = (this.foreground.b - 0.1) % 255;
+                }
+            } else if(this.riset.state === 2) { // Sunrise
+                if(this.background.r < 96) {
+                    this.background.r = (this.background.r + 0.1) % 255;
+                    this.background.g = (this.background.g + 0.1) % 255;
+                    this.background.b = (this.background.b + 0.1) % 255;
+                } else if(this.background.r < 254) {
+                    this.background.r = (this.background.r + 0.2) % 255;
+                } else if(this.background.g < 254) {
+                    this.background.g = (this.background.g + 0.2) % 255;
+                    this.background.b = (this.background.b + 0.2) % 255;
+                } else {
+                    this.riset.state = 0;
+                }
 
-                    if(this.background.r < 128) {
-                        this.midground.sprite.alpha = (64 / this.background.r - 0.5) * 2;
-                    }
+                if(this.background.r < 128) {
+                    this.midground.sprite.alpha = (64 / this.background.r - 0.5) * 2;
+                }
 
-                    if(this.foreground.r < 176) {
-                        this.foreground.r = (this.foreground.r + 0.1) % 255;
-                        this.foreground.g = (this.foreground.g + 0.1) % 255;
-                        this.foreground.b = (this.foreground.b + 0.1) % 255;
-                    } else if(this.foreground.r < 254) {
-                        this.foreground.r = (this.foreground.r + 0.1) % 255;
-                    } else if(this.foreground.g < 254) {
-                        this.foreground.g = (this.foreground.g + 0.1) % 255;
-                        this.foreground.b = (this.foreground.b + 0.1) % 255;
-                    }
+                if(this.foreground.r < 176) {
+                    this.foreground.r = (this.foreground.r + 0.1) % 255;
+                    this.foreground.g = (this.foreground.g + 0.1) % 255;
+                    this.foreground.b = (this.foreground.b + 0.1) % 255;
+                } else if(this.foreground.r < 254) {
+                    this.foreground.r = (this.foreground.r + 0.1) % 255;
+                } else if(this.foreground.g < 254) {
+                    this.foreground.g = (this.foreground.g + 0.1) % 255;
+                    this.foreground.b = (this.foreground.b + 0.1) % 255;
                 }
             }
         },

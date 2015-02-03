@@ -20,13 +20,19 @@ game.module(
             // ==========
             // Add new assets to load queue
 
-            // Fonts
+            // ----- Fonts -----
             game.addAsset('interface/font/verdana_24.fnt');
 
-            // Images, tilesets, spritesheets
+            // ----- Images -----
+            // Images/Screens
+            game.addAsset('interface/background/sky.png', 'titleBackground');
+            game.addAsset('interface/background/BackdropBlackLittleSparkTransparent.png', 'titleMidground');
+            game.addAsset('interface/background/d20_by_olracadejup-d4ohdvm.png', 'titleForeground');
+
+            // Tilesets
             game.addAsset('tileset/tmw_desert_spacing.png');
 
-            // Maps
+            // ----- Maps -----
             game.addAsset('maps/desert.json');
             // ==========
 
@@ -38,7 +44,7 @@ game.module(
         },
 
         loaded: function() {
-            game.system.setScene('Credits');
+            game.system.setScene('Title');
         }
     });
 });
