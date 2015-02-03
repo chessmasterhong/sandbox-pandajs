@@ -54,8 +54,8 @@ game.module(
 
             this.riset.timer = new game.Timer(30000);
 
-            var fader = new game.Fader();
-            fader.fadeIn();
+            this.fader = new game.Fader();
+            this.fader.fadeIn();
         },
 
         update: function() {
@@ -136,11 +136,15 @@ game.module(
         },
 
         keydown: function() {
-            game.system.setScene('World');
+            this.fader.fadeOut(function() {
+                game.system.setScene('World');
+            });
         },
 
         click: function() {
-            game.system.setScene('World');
+            this.fader.fadeOut(function() {
+                game.system.setScene('World');
+            });
         }
     });
 });
