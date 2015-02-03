@@ -9,6 +9,7 @@ game.module(
 .require(
     // Scenes (Game states)
     'game.scenes.boot',
+    'game.scenes.credits',
     'game.scenes.title',
     'game.scenes.world',
 

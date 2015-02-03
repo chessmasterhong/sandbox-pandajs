@@ -15,6 +15,10 @@ game.module(
     game.createScene('Credits', {
         init: function() {
             console.log('Credits Screen');
+
+            var text = new game.BitmapText('Hello', { font: 'verdana_24' });
+            text.position.set(100, 100);
+            this.stage.addChild(text);
         }
     });
 });

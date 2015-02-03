@@ -17,9 +17,18 @@ game.module(
         init: function() {
             console.log('Boot Scene');
 
-            // Add new asset to load queue
+            // ==========
+            // Add new assets to load queue
+
+            // Fonts
+            game.addAsset('interface/font/verdana_24.fnt');
+
+            // Images, tilesets, spritesheets
             game.addAsset('tileset/tmw_desert_spacing.png');
+
+            // Maps
             game.addAsset('maps/desert.json');
+            // ==========
 
             // Initialize new loader with callback function
             // Change game to 'Main' scene on load complete
@@ -29,7 +38,7 @@ game.module(
         },
 
         loaded: function() {
-            game.system.setScene('Title');
+            game.system.setScene('Credits');
         }
     });
 });
