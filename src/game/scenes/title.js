@@ -51,6 +51,8 @@ game.module(
             this.foreground.sprite = new game.Sprite('titleForeground');
             this.foreground.sprite.scale.set(1.6, 1.6);
             game.scene.stage.addChild(this.foreground.sprite);
+
+            this.riset.timer = new game.Timer(30000);
         },
 
         update: function() {
@@ -58,14 +60,14 @@ game.module(
             this.foreground.sprite.tint = '0x' + Math.floor(this.foreground.r).toString(16) + Math.floor(this.foreground.g).toString(16) + Math.floor(this.foreground.b).toString(16);
 
             if(this.riset.state === 0) { // Day/Night
-                this.riset.timer++;
-                if(this.riset.timer > 2000) {
+                if(this.riset.timer.time() > 0) {
                     if(this.background.r > 128) {
                         this.riset.state = 1;
                     } else {
                         this.riset.state = 2;
                     }
-                    this.riset.timer = 0;
+                    this.riset.timer.reset();
+                    this.riset.timer.pause();
                 }
             } else if(this.riset.state === 1) { // Sunset
                 if(this.background.g > 96) {
@@ -79,6 +81,7 @@ game.module(
                     this.background.b = (this.background.b - 0.1) % 255;
                 } else {
                     this.riset.state = 0;
+                    this.riset.timer.resume();
                 }
 
                 if(this.background.r < 128) {
@@ -107,6 +110,7 @@ game.module(
                     this.background.b = (this.background.b + 0.2) % 255;
                 } else {
                     this.riset.state = 0;
+                    this.riset.timer.resume();
                 }
 
                 if(this.background.r < 128) {
