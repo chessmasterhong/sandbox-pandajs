@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Tiled Map Editor support.
+ * @author Eemeli Kelokorpi {@link https://github.com/ekelokorpi|(ekelokorpi)}
+ * @see {@link https://github.com/ekelokorpi/panda.js-plugins/tree/master/tiled} for original source code.
+ */
+
 game.module(
     'plugins.tiled.tiled'
 )

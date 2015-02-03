@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Fade between scenes.
+ * @author Eemeli Kelokorpi {@link https://github.com/ekelokorpi|(ekelokorpi)}
+ * @see {@link https://github.com/ekelokorpi/panda.js-plugins/tree/master/fader} for original source code.
+ */
+
 game.module(
     'plugins.fader.fader'
 )
