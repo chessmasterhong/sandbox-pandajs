@@ -1,5 +1,5 @@
 game.module(
-    'game.entities.testEntity'
+    'game.entities.characters.pc.testEntity'
 )
 .body(function() {
     'use strict';

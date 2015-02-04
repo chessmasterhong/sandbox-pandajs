@@ -21,13 +21,13 @@ game.module(
             // Add new assets to load queue
 
             // ----- Fonts -----
-            game.addAsset('interface/font/verdana_24.fnt');
+            game.addAsset('interfaces/fonts/verdana_24.fnt');
 
             // ----- Images -----
             // Images/Screens
-            game.addAsset('interface/background/sky.png', 'titleBackground');
-            game.addAsset('interface/background/BackdropBlackLittleSparkTransparent.png', 'titleMidground');
-            game.addAsset('interface/background/d20_by_olracadejup-d4ohdvm.png', 'titleForeground');
+            game.addAsset('interfaces/backgrounds/sky.png', 'titleBackground');
+            game.addAsset('interfaces/backgrounds/BackdropBlackLittleSparkTransparent.png', 'titleMidground');
+            game.addAsset('interfaces/backgrounds/d20_by_olracadejup-d4ohdvm.png', 'titleForeground');
 
             // Tilesets
             game.addAsset('tileset/tmw_desert_spacing.png');

@@ -14,7 +14,7 @@ game.module(
     'game.scenes.world',
 
     // Entities (Game objects)
-    'game.entities.testEntity',
+    'game.entities.characters.pc.testEntity',
 
     // Plugins
     'plugins.fader.fader',
